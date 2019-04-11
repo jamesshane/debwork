@@ -57,6 +57,8 @@ apt update
 
 apt install --download-only -y mongodb-org
 
+apt  install -y -f /var/cache/apt/archives/*.deb
+
 apt -y install -f ./*.deb
 
 systemctl start mongod
