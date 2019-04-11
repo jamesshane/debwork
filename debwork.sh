@@ -11,7 +11,7 @@ if [ "$1" == "reset" ]; then
     ufw enable
     ufw allow 22
     exit 1
-if
+fi
 
 apt update
 
