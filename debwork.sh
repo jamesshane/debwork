@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ "$1" == "reset" ]; then
     ./linuxReset.sh downstage stage1
