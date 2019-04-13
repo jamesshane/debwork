@@ -27,7 +27,7 @@ chmod +x linuxReset.sh
 
 ./linuxReset.sh makestage stage1
 
-apt --download-only -y install gnome-core ufw vnc4server git 
+apt --download-only -y install gnome-core vnc4server git 
 
 apt install --download-only -y dirmngr --install-recommends
 
@@ -66,10 +66,4 @@ systemctl start mongod
 systemctl enable mongod
 
 npm i -g create-react-app
-
-passwd jamesshane
-
-ufw enable
-
-ufw allow 22
 
