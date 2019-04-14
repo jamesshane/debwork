@@ -7,9 +7,6 @@ if [ "$1" == "reset" ]; then
     systemctl start mongod
     systemctl enable mongod
     npm i -g create-react-app
-    passwd jamesshane
-    ufw enable
-    ufw allow 22
     exit 1
 fi
 
