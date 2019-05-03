@@ -4,7 +4,7 @@ sudo apt update
 
 sudo apt upgrade -y
 
-sudo apt install openbox tigervnc-standalone-server lilyterm firefox docker.io tmux -y
+sudo apt install xorg openbox tigervnc-standalone-server lilyterm firefox docker.io tmux vim --no-install-recommends -y
 
 sudo systemctl start docker
 
