@@ -1,0 +1,55 @@
+#
+# Ubuntu Desktop (budgie) Dockerfile
+#
+#
+
+# Pull base image.
+FROM ubuntu
+
+# Install budgie and VNC server.
+RUN \
+  apt-get update && \
+   DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common && \
+  add-apt-repository ppa:budgie-remix/ppa && \
+  DEBIAN_FRONTEND=noninteractive apt-get install -y budgie-desktop lilyterm tightvncserver vim firefox && \
+  rm -rf /var/lib/apt/lists/*
+
+# Define working directory.
+WORKDIR /data
+
+# Define default command.
+CMD ["bash"]
+
+# Expose ports.
+EXPOSE 5901
+
+#usage
+# docker build -t vncbudgie - < installdockervm-budgie
+
+#first RUN
+# docker run -it -p 5901:5901 --name budgievm -e USER=root vncbudgie bash
+
+#in docker container
+# vncserver
+# !! -kill :1
+# rm ~/.vnc/xstartup
+# echo -e "#"'!'"/bin/bash\n\nunset SESSION_MANAGER\nunset DBUS_SESSION_BUS_ADDRESS\n\nmate-session &\nmate-panel &" > ~/.vnc/xstartup
+# chmod +x ~/.vnc/xstartup
+
+#start container
+# docker start budgievm
+
+#start vncserver
+# docker exec -it -e USER=root budgievm bash
+# vncserver
+
+#bonus commands
+#---
+#restart container
+# docker restart <container id>
+#stop container
+# docker stop <container id>
+#connect to vm and start vnc with resolution
+# docker run -it --rm -p 5901:5901 -e USER=root <image id> bash -c "vncserver :1 -geometry 1280x800 -depth 24 && tail -F /root/.vnc/*.log"
+
+

@@ -22,10 +22,10 @@ CMD ["bash"]
 EXPOSE 5901
 
 #usage
-# docker build -t vncxfce - < installdockervm
+# docker build -t vncxfce - < installdockervm-xfce
 
 #first RUN
-# docker run -it -p 5901:5901 --name xfcevm-e USER=root vncxfce bash
+# docker run -it -p 5901:5901 --name xfcevm -e USER=root vncxfce bash
 
 #in docker container
 # vncserver
