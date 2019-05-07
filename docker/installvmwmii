@@ -1,0 +1,31 @@
+#!/bin/bash
+
+sudo apt update
+
+sudo apt upgrade -y
+
+sudo apt install xinit wmii tigervnc-standalone-server lilyterm firefox docker.io tmux vim --no-install-recommends -y
+
+sudo systemctl start docker
+
+sudo systemctl enable docker
+
+sudo useradd -m -s /bin/bash du
+
+echo -e "Password for docker user (du):\n"
+
+sudo passwd du
+
+sudo usermod -aG docker du
+
+echo -e "Password for vncserver:\n";
+
+vncserver 
+
+vncserver -kill :1
+
+rm ~/.vnc/xstartup
+
+echo -e "#"'!'"/bin/bash\n\nwmii &" > ~/.vnc/xstartup
+
+chmod +x ~/.vnc/xstartup
