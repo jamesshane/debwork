@@ -30,10 +30,16 @@ echo -e "#"'!'"/bin/bash\n\nwmii &" > ~/.vnc/xstartup
 
 chmod +x ~/.vnc/xstartup
 
-sed -i 's/4/1/' .wmii/wmiirc_local
-
 sudo snap install simplenote
 
 sudo snap install code --classic
+
+wmii
+
+sed -i 's/4/1/' .wmii/wmiirc_local
+
+vncserver
+
+
 
 
