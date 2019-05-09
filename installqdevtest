@@ -34,9 +34,9 @@ sudo snap install simplenote
 
 sudo snap install code --classic
 
-wmii
+#wmii
 
-sed -i 's/4/1/' .wmii/wmiirc_local
+#sed -i 's/4/1/' .wmii/wmiirc_local
 
 vncserver
 
