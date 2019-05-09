@@ -40,6 +40,6 @@ sed -i 's/4/1/' .wmii/wmiirc_local
 
 vncserver
 
-
+ echo -e "Remember to do 'xhost +' when you are in X11\nPress enter to continue" && read
 
 
