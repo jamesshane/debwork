@@ -1,0 +1,45 @@
+#!/bin/bash
+
+sudo apt update
+
+sudo apt upgrade -y
+
+sudo apt install xinit awesome vnc4server tigervnc-common lilyterm firefox docker.io tmux vim x11-xserver-utils git x11-xserver-utils --no-install-recommends -y
+
+sudo systemctl start docker
+
+sudo systemctl enable docker
+
+sudo useradd -m -s /bin/bash du
+
+echo -e "Password for docker user (du):\n"
+
+sudo passwd du
+
+sudo usermod -aG docker du
+
+echo -e "Password for vncserver:\n";
+
+vncserver 
+
+vncserver -kill :1
+
+rm ~/.vnc/xstartup
+
+echo -e "#"'!'"/bin/bash\n\nawesome &" > ~/.vnc/xstartup
+
+chmod +x ~/.vnc/xstartup
+
+sudo snap install simplenote
+
+sudo snap install code --classic
+
+wmii
+
+sed -i 's/4/1/' .wmii/wmiirc_local
+
+vncserver
+
+ echo -e "Remember to do 'xhost +' when you are in X11\nPress enter to continue" && read
+
+
