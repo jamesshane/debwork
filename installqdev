@@ -4,7 +4,7 @@ sudo apt update
 
 sudo apt upgrade -y
 
-sudo apt install xinit wmii vnc4server lilyterm firefox docker.io tmux vim x11-xserver-utils git x11-xserver-utils --no-install-recommends -y
+sudo apt install xinit wmii vnc4server tigervnc-common lilyterm firefox docker.io tmux vim x11-xserver-utils git x11-xserver-utils --no-install-recommends -y
 
 sudo systemctl start docker
 
