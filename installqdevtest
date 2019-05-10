@@ -1,45 +1,34 @@
 #!/bin/bash
 
 sudo apt update
-
 sudo apt upgrade -y
-
-sudo apt install xinit awesome vnc4server tigervnc-common terminology firefox docker.io tmux vim x11-xserver-utils git x11-xserver-utils --no-install-recommends -y
-
-sudo systemctl start docker
-
-sudo systemctl enable docker
-
-sudo useradd -m -s /bin/bash du
-
-echo -e "Password for docker user (du):\n"
-
-sudo passwd du
-
-sudo usermod -aG docker du
-
-echo -e "Password for vncserver:\n";
-
+sudo apt install xinit awesome vnc4server tigervnc-common terminology firefox tmux vim x11-xserver-utils x11-xserver-utils --no-install-recommends -y
+echo -e "\nPassword for vncserver:\n";
 vncserver 
-
 vncserver -kill :1
-
 rm ~/.vnc/xstartup
-
 echo -e "#"'!'"/bin/bash\n\nawesome &" > ~/.vnc/xstartup
-
 chmod +x ~/.vnc/xstartup
-
 sudo snap install simplenote
-
-sudo snap install code --classic
-
-#wmii
-
-#sed -i 's/4/1/' .wmii/wmiirc_local
-
+sudo sed -i 's/Mod4/Mod1/' /etc/xdg/awesome/rc.lua
 vncserver
+ echo -e "\nRemember to do 'xhost +' when you are in X11\nPress enter to continue" && read
 
- echo -e "Remember to do 'xhost +' when you are in X11\nPress enter to continue" && read
-
-
+if [ "$1" == "dev" ]; then
+    curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
+    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
+    sudo apt update
+    sudo apt install -y nodejs mongodb-org git docker.io
+    sudo systemctl start mongod
+    sudo systemctl enable mongod
+    sudo snap install code --classic
+    sudo systemctl start docker
+    sudo systemctl enable docker
+    sudo useradd -m -s /bin/bash du
+    echo -e "d\nd\n" | sudo passwd du
+    #echo -e "\nPassword for docker user (du):\n"
+    #sudo passwd du
+    sudo usermod -aG docker du
+    exit 1
+fi
