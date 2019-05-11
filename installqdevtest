@@ -7,7 +7,7 @@ fi
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install xinit awesome vnc4server tigervnc-common terminology firefox tmux vim x11-xserver-utils --no-install-recommends -y
+sudo apt install xinit awesome tightvncserver terminology firefox tmux vim x11-xserver-utils --no-install-recommends -y
 echo -e "\nPassword for vncserver:\n";
 vncserver 
 vncserver -kill :1
