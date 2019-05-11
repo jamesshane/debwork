@@ -7,10 +7,7 @@ fi
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install xinit wmii tightvncserver lilyterm firefox tmux vim x11-xserver-utils --no-install-recommends -y
-if [ "$2" == "aws" ]; then
-    sudo apt install xfonts-base -y
-fi
+sudo apt install xinit wmii tightvncserver xfonts-base lilyterm firefox tmux vim x11-xserver-utils --no-install-recommends -y
 echo -e "\nPassword for vncserver:\n";
 vncserver 
 vncserver -kill :1
