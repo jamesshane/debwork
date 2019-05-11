@@ -7,7 +7,7 @@ fi
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install xinit awesome vnc4server tigervnc-common terminology firefox tmux vim x11-xserver-utils x11-xserver-utils --no-install-recommends -y
+sudo apt install xinit awesome vnc4server tigervnc-common terminology firefox tmux vim x11-xserver-utils --no-install-recommends -y
 echo -e "\nPassword for vncserver:\n";
 vncserver 
 vncserver -kill :1
@@ -17,7 +17,6 @@ chmod +x ~/.vnc/xstartup
 sudo snap install simplenote
 sudo sed -i 's/Mod4/Mod1/' /etc/xdg/awesome/rc.lua
 vncserver
- echo -e "\nRemember to do 'xhost +' when you are in X11\nPress enter to continue" && read
 
 if [ "$1" == "dev" ]; then
     curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
@@ -35,5 +34,8 @@ if [ "$1" == "dev" ]; then
     unset DPASS
     #sudo passwd du
     sudo usermod -aG docker du
+    git config --global user.name "James Shane" && git config --global user.email "jamesshane@gmail.com"
     exit 1
 fi
+
+ echo -e "\nRemember to do 'xhost +' when you are in X11\nPress enter to continue" && read
