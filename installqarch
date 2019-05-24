@@ -34,7 +34,19 @@ fi
 
 if [ "$1" == "apps" ]; then
     sudo pacman -Syu
-    sudo pacman -S xorg xorg-xinit terminator firefox dmenu git lunix-headers vnc4server lightdm
+    sudo pacman -S xorg xorg-xinit terminator firefox dmenu git linux-headers lightdm
+    sudo git clone git://git.suckless.org/dwm
+    cd dwm
+    make
+    sudo make install
+    echo -e "#"'!'"/bin/bash\n\nexec dwm" > ~/.xinitrc
+    exit 1
+fi
+
+if [ "$1" == "appsgcp" ]; then
+    sudo pacman -Syu
+    sudo pacman -S base-devel
+    sudo pacman -S xorg xorg-xinit terminator firefox dmenu git linux-headers tigervnc
     sudo git clone git://git.suckless.org/dwm
     cd dwm
     make
@@ -45,20 +57,18 @@ if [ "$1" == "apps" ]; then
     rm ~/.vnc/xstartup
     echo -e "#"'!'"/bin/bash\n\nexec dwm" > ~/.vnc/xstartup
     chmod +x ~/.vnc/xstartup
-    reboot
+    exit 1
 fi
 
 if [ "$1" == "appsroot" ]; then
     pacman -Syu
-    pacman -S xorg xorg-xinit terminator firefox dmenu git lunix-headers vnc4serer lightdm
+    pacman -S xorg xorg-xinit terminator firefox dmenu git lunix-headers lightdm
     git clone git://git.suckless.org/dwm
     cd dwm
     make
     make install
     echo -e "#"'!'"/bin/bash\n\nexec dwm" > ~/.xinitrc
-    vncserver
-    vncserver -kill :1
-    reboot
+    exit 1
 fi
 
 if [ "$1" == "vbox" ]; then
