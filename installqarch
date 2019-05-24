@@ -8,7 +8,7 @@ if [ "$1" == "stage1" ]; then
     genfstab /mnt >> /mnt/etc/fstab
     cp $0 /mnt/
     arch-chroot /mnt
-    exit 1
+    reboot
 fi
 
 if [ "$1" == "stage2" ]; then
@@ -21,7 +21,7 @@ if [ "$1" == "stage2" ]; then
     pacman -S grub
     grub-install /dev/sda
     grub-mkconfig -o /boot/grub/grub.cfg
-    reboot
+    exit 1
 fi
 
 if [ "$1" == "network" ]; then
@@ -33,13 +33,40 @@ if [ "$1" == "network" ]; then
 fi
 
 if [ "$1" == "apps" ]; then
+    sudo pacman -Syu
+    sudo pacman -S xorg xorg-xinit terminator firefox dmenu git lunix-headers vnc4server lightdm
+    sudo git clone git://git.suckless.org/dwm
+    cd dwm
+    make
+    sudo make install
+    echo -e "#"'!'"/bin/bash\n\nexec dwm" > ~/.xinitrc
+    vncserver
+    vncserver -kill :1 
+    rm ~/.vnc/xstartup
+    echo -e "#"'!'"/bin/bash\n\nexec dwm" > ~/.vnc/xstartup
+    chmod +x ~/.vnc/xstartup
+    reboot
+fi
+
+if [ "$1" == "appsroot" ]; then
     pacman -Syu
-    pacman -S xorg xorg-xinit terminator firefox dmenu
+    pacman -S xorg xorg-xinit terminator firefox dmenu git lunix-headers vnc4serer lightdm
+    git clone git://git.suckless.org/dwm
+    cd dwm
+    make
+    make install
+    echo -e "#"'!'"/bin/bash\n\nexec dwm" > ~/.xinitrc
+    vncserver
+    vncserver -kill :1
     reboot
 fi
 
 if [ "$1" == "vbox" ]; then
-    pacman -Syu
-    pacman -S xorg xorg-xinit terminator firefox dmenu
+    echo -e "\nLoad guest installs in vbox:\n"
+    read 
+    pacman -S virtualbox-guest-iso
+    mount /dev/cdrom /mnt
+    cd /mnt
+    ./VBoxLinuxAdditions.run
     reboot
 fi
