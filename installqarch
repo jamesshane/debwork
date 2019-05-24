@@ -1,0 +1,45 @@
+#!/bin/bash
+
+if [ "$1" == "stage1" ]; then
+    fdisk /dev/sda
+    mkfs.ext4 /dev/sda1
+    mount /dev/sda1 /mnt
+    pacstrap /mnt/ base base-devel
+    genfstab /mnt >> /mnt/etc/fstab
+    cp $0 /mnt/
+    arch-chroot /mnt
+    exit 1
+fi
+
+if [ "$1" == "stage2" ]; then
+    vi /etc/locale.gen
+    locale-gen
+    echo "LANG=en_US.UTF-8"  > /etc/locale.conf
+    hwclock --systohc --utc
+    echo "zathras" > /etc/hostname
+    passwd
+    pacman -S grub
+    grub-install /dev/sda
+    grub-mkconfig -o /boot/grub/grub.cfg
+    reboot
+fi
+
+if [ "$1" == "network" ]; then
+    cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/enp0s3
+    vi /etc/netctl/enp0s3
+    systemctl enable dhcpcd
+    systemctl start dhcpcd
+    reboot
+fi
+
+if [ "$1" == "apps" ]; then
+    pacman -Syu
+    pacman -S xorg xorg-xinit terminator firefox dmenu
+    reboot
+fi
+
+if [ "$1" == "vbox" ]; then
+    pacman -Syu
+    pacman -S xorg xorg-xinit terminator firefox dmenu
+    reboot
+fi
