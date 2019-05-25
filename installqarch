@@ -46,11 +46,22 @@ fi
 if [ "$1" == "appsgcp" ]; then
     sudo pacman -Syu
     sudo pacman -S base-devel
-    sudo pacman -S xorg xorg-xinit terminator firefox dmenu git linux-headers tigervnc
-    sudo git clone git://git.suckless.org/dwm
+    sudo pacman -S xorg xorg-xinit terminator firefox git linux-headers tigervnc
+    git clone git://git.suckless.org/dmenu
+    cd dmenu
+    make
+    sudo make install
+    cd ..
+    git clone git://git.suckless.org/dwm
     cd dwm
     make
     sudo make install
+    cd ..
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+    cd ..
+    yay -S simplenote
     echo -e "#"'!'"/bin/bash\n\nexec dwm" > ~/.xinitrc
     vncserver
     vncserver -kill :1 
