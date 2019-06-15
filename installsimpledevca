@@ -1,0 +1,41 @@
+#!/bin/bash
+
+if [ "$1" == "dev" ]; then
+    echo -e "\nPassword for docker user (du):\n"
+    read DPASS
+fi
+
+sudo apt update
+sudo apt upgrade -y
+sudo apt install xinit dwm dmenu tightvncserver xfonts-base lilyterm stterm firefox tmux vim x11-xserver-utils --no-install-recommends -y
+echo -e "\nPassword for vncserver:\n";
+vncserver 
+vncserver -kill :1
+rm ~/.vnc/xstartup
+echo -e "#"'!'"/bin/bash\n\dwm &" > ~/.vnc/xstartup
+chmod +x ~/.vnc/xstartup
+#sudo snap install simplenote #&& wmii
+#sed -i 's/4/1/' .wmii/wmiirc_local
+vncserver
+
+if [ "$1" == "dev" ]; then
+    curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
+    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
+    sudo apt update
+    sudo apt install -y nodejs mongodb-org git docker.io
+    sudo systemctl start mongod
+    sudo systemctl enable mongod
+    sudo snap install code --classic
+    sudo systemctl start docker
+    sudo systemctl enable docker
+    sudo useradd -m -s /bin/bash du
+    echo -e "$DPASS\n$DPASS\n" | sudo passwd du
+    unset DPASS
+    #sudo passwd du
+    sudo usermod -aG docker du
+    git config --global user.name "James Shane" && git config --global user.email "jamesshane@gmail.com"
+    exit 1
+fi
+
+ echo -e "\nRemember to do 'xhost +' when you are in X11\nPress enter to continue" && read
