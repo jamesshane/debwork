@@ -7,7 +7,7 @@ fi
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install xinit dwm dmenu tightvncserver xfonts-base lilyterm stterm firefox tmux vim x11-xserver-utils --no-install-recommends -y
+sudo apt install xinit dwm dmenu tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer xfonts-base lilyterm stterm firefox tmux vim x11-xserver-utils --no-install-recommends -y
 echo -e "\nPassword for vncserver:\n";
 vncserver 
 vncserver -kill :1
