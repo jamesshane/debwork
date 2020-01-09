@@ -12,6 +12,7 @@ if [ "$1" == "stage1" ]; then
 fi
 
 if [ "$1" == "stage2" ]; then
+    pacman -S vi
     vi /etc/locale.gen
     locale-gen
     echo "LANG=en_US.UTF-8"  > /etc/locale.conf
