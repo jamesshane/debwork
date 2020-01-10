@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$1" == "" ]; then
-        echo "admin update X i3 gnome gdmon omz dev fixclock neofetch"
+        echo "update X i3 gnome omz neofetch"
 fi
 
 
@@ -11,15 +11,17 @@ if [ "$1" == "update" ]; then
 fi
 
 if [ "$1" == "X" ]; then
-        sudo apt install xorg xinit xterm virtualbox-guest-utils nomacs -y        
+        sudo apt install xorg xinit xterm nomacs gcc make perl -y        
         sudo apt install terminator firefox-esr -y
         sudo apt install software-properties-common apt-transport-https wget -y
+        sudo apt install linux-headers-$(uname -r) -y
 fi
+#virtualbox-guest-utils 
 
 if [ "$1" == "i3" ]; then
         sudo apt install i3 terminator firefox dmenu thunar -y
-        echo "exec i3" > /home/v/.xinitrc
-        chown v:v /home/v/.xinitrc
+        #echo "exec i3" > /home/v/.xinitrc
+        #chown v:v /home/v/.xinitrc
 fi
 
 if [ "$1" == "gnome" ]; then
