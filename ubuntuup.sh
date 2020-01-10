@@ -1,9 +1,8 @@
 #!/bin/bash
 
 if [ "$1" == "" ]; then
-        #echo "update X i3 gnome omz neofetch"
+        echo "full"
 fi
-
 
 if [ "$1" == "update" ]; then
 	sudo apt update -y
@@ -22,7 +21,6 @@ if [ "$1" == "vmdev" ]; then
         sudo apt install gcc make perl -y
         sudo apt install linux-headers-$(uname -r) -y
 fi
-
 
 if [ "$1" == "i3" ]; then
         sudo apt install i3 terminator chromium-browser dmenu thunar -y
@@ -44,7 +42,6 @@ if [ "$1" == "omz" ]; then
         sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
         sed -i 's/robbyrussell/junkfood/g' ~/.zshrc
 fi
-
 
 if [ "$1" == "fixclock" ]; then
 	#fix
