@@ -10,12 +10,8 @@ if [ "$1" == "update" ]; then
 fi
 
 if [ "$1" == "X" ]; then
-        sudo apt install xorg xinit -y        
-        #sudo apt install terminator -y
-        #sudo apt install software-properties-common apt-transport-https wget -y
-        #
+        sudo apt install xorg xinit -y
 fi
-#virtualbox-guest-utils xterm firefox-esr nomacs
 
 if [ "$1" == "vmdev" ]; then
         sudo apt install gcc make perl -y
