@@ -54,9 +54,9 @@ fi
 
 if [ "$1" == "full" ]; then
   #./devprep admin
-  ./devprep.sh update
-  ./devprep.sh X
-  ./devprep.sh i3
-  ./devprep.sh gnome
+  ./ubuntuup.sh update
+  ./ubuntuup.sh X
+  ./ubuntuup.sh i3
+  ./ubuntuup.sh gnome
 fi
 
