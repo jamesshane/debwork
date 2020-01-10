@@ -11,12 +11,18 @@ if [ "$1" == "update" ]; then
 fi
 
 if [ "$1" == "X" ]; then
-        sudo apt install xorg xinit nomacs gcc make perl -y        
-        sudo apt install terminator -y
+        sudo apt install xorg xinit -y        
+        #sudo apt install terminator -y
         #sudo apt install software-properties-common apt-transport-https wget -y
+        #
+fi
+#virtualbox-guest-utils xterm firefox-esr nomacs
+
+if [ "$1" == "vmdev" ]; then
+        sudo apt install gcc make perl -y
         sudo apt install linux-headers-$(uname -r) -y
 fi
-#virtualbox-guest-utils xterm firefox-esr
+
 
 if [ "$1" == "i3" ]; then
         sudo apt install i3 terminator chromium-browser dmenu thunar -y
@@ -63,11 +69,12 @@ if [ "$1" == "snap" ]; then
 fi
 
 if [ "$1" == "full" ]; then
-  #./devprep admin
-  ./$0 update
-  ./$0 X
-  ./$0 i3
-  ./$0 lightdm
-  ./$0 snap
+        #./devprep admin
+        ./$0 update
+        ./$0 X
+        ./$0 i3
+        ./$0 lightdm
+        ./$0 vmdev
+        ./$0 snap
 fi
 
