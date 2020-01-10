@@ -13,7 +13,7 @@ fi
 if [ "$1" == "X" ]; then
         sudo apt install xorg xinit xterm virtualbox-guest-utils nomacs -y        
         sudo apt install terminator firefox-esr -y
-        sudo apt install software-properties-common apt-transport-https wget
+        sudo apt install software-properties-common apt-transport-https wget -y
 fi
 
 if [ "$1" == "i3" ]; then
