@@ -10,26 +10,20 @@ if [ "$1" == "update" ]; then
 fi
 
 if [ "$1" == "X" ]; then
-        sudo apt install xorg xinit --no-install-recommends -y
+        sudo apt install xorg xinit -y
 fi
 
 if [ "$1" == "vmdev" ]; then
-        sudo apt install gcc make perl --no-install-recommends -y
+        sudo apt install gcc make perl -y
         sudo apt install linux-headers-$(uname -r) -y
 fi
 
 if [ "$1" == "i3" ]; then
-        sudo apt install i3 terminator chromium-browser dmenu thunar --no-install-recommends -y
-        #echo "exec i3" > /home/v/.xinitrc
-        #chown v:v /home/v/.xinitrc
-fi
-
-if [ "$1" == "gnome" ]; then
-	sudo apt install gdm3 gnome-terminal -y
+        sudo apt install i3 terminator chromium-browser dmenu thunar -y
 fi
 
 if [ "$1" == "lightdm" ]; then
-	sudo apt install lightdm --no-install-recommends -y
+	sudo apt install lightdm -y
 fi
 
 if [ "$1" == "omz" ]; then
@@ -42,10 +36,6 @@ fi
 if [ "$1" == "fixclock" ]; then
 	#fix
 	echo "don't need this... it's on, if clock is wrong, correct the /etc/localtime and reboot"
-        #sudo apt install ntp -y
-        #sudo ntpd -qg
-        #sudo systemctl enable ntpd.service
-        #sudo systemctl enable ntpd
 fi
 
 if [ "$1" == "neofetch" ]; then
@@ -62,12 +52,13 @@ if [ "$1" == "snap" ]; then
 fi
 
 if [ "$1" == "full" ]; then
-        #./devprep admin
         ./$0 update
         ./$0 X
         ./$0 i3
         ./$0 lightdm
         ./$0 vmdev
         ./$0 snap
+        ./$0 omz
+        ./$0 neofetch
 fi
 
