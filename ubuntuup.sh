@@ -57,7 +57,7 @@ fi
 
 if [ "$1" == "snap" ]; then
 	sudo snap install discord
-        sudo snap install vscode --classic
+        sudo snap install code --classic
         sudo snap install simplenote
 fi
 
