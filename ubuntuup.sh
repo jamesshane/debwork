@@ -10,16 +10,16 @@ if [ "$1" == "update" ]; then
 fi
 
 if [ "$1" == "X" ]; then
-        sudo apt install xorg xinit -y
+        sudo apt install xorg xinit --no-install-recommends -y
 fi
 
 if [ "$1" == "vmdev" ]; then
-        sudo apt install gcc make perl -y
+        sudo apt install gcc make perl --no-install-recommends -y
         sudo apt install linux-headers-$(uname -r) -y
 fi
 
 if [ "$1" == "i3" ]; then
-        sudo apt install i3 terminator chromium-browser dmenu thunar -y
+        sudo apt install i3 terminator chromium-browser dmenu thunar --no-install-recommends -y
         #echo "exec i3" > /home/v/.xinitrc
         #chown v:v /home/v/.xinitrc
 fi
@@ -29,7 +29,7 @@ if [ "$1" == "gnome" ]; then
 fi
 
 if [ "$1" == "lightdm" ]; then
-	sudo apt install lightdm -y
+	sudo apt install lightdm --no-install-recommends -y
 fi
 
 if [ "$1" == "omz" ]; then
@@ -58,7 +58,7 @@ fi
 if [ "$1" == "snap" ]; then
 	sudo snap install discord
         sudo snap install vscode --classic
-        sudo snap install simmplenote
+        sudo snap install simplenote
 fi
 
 if [ "$1" == "full" ]; then
