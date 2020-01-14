@@ -17,26 +17,41 @@ if [ "$1" == "stage2" ]; then
     locale-gen
     echo "LANG=en_US.UTF-8"  > /etc/locale.conf
     hwclock --systohc --utc
-    echo "zathras" > /etc/hostname
+    echo "zathras" >> /etc/hostname
+    echo "zathras" >> /etc/hosts
     passwd
-    pacman -S grub
+    pacman -S grub dhcpcd
     grub-install /dev/sda
     grub-mkconfig -o /boot/grub/grub.cfg
     exit 1
 fi
 
 if [ "$1" == "network" ]; then
-    cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/enp0s3
-    vi /etc/netctl/enp0s3
-    systemctl enable dhcpcd
-    systemctl start dhcpcd
+    systemctl start dhcpcd@enp0s3.service
+    systemctl enable dhcpcd@enp0s3.service
     reboot
+fi
+
+if [ "$1" == "user" ]; then
+    useradd -m -g users -G wheel -s /bin/bash j
+    passwd j
+    visudo
+fi
+
+if [ "$1" == "X" ]; then
+    sudo pacman -Syu
+    sudo pacman -S --needed xorg xorg-xinit virtualbox-guest-utils mesa xorg-server-utils ttd-dejavu terminator
+fi
+
+if [ "$1" == "i3" ]; then
+    sudo pacman -Syu
+    subo pacman -S i3
 fi
 
 if [ "$1" == "apps" ]; then
     sudo pacman -Syu
-    sudo pacman -S --needed base-devel
-    sudo pacman -S --needed xorg xorg-xinit terminator firefox git linux-headers
+    #sudo pacman -S --needed base-devel
+    sudo pacman -S --needed xorg xorg-xinit virtualbox-guest-utils mesa xorg-serer-utils ttd-dejavu
     git clone git://git.suckless.org/dmenu
     cd dmenu
     make
