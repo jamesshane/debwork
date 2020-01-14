@@ -46,6 +46,7 @@ fi
 if [ "$1" == "i3" ]; then
     sudo pacman -Syu
     subo pacman -S i3
+    echo -e "#"'!'"/bin/bash\n\nexec i3" > ~/.xinitrc
 fi
 
 if [ "$1" == "apps" ]; then
