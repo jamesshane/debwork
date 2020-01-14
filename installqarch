@@ -4,7 +4,7 @@ if [ "$1" == "stage1" ]; then
     fdisk /dev/sda
     mkfs.ext4 /dev/sda1
     mount /dev/sda1 /mnt
-    pacstrap /mnt/ base base-devel
+    pacstrap /mnt/ base base-devel linux linux-firmware
     genfstab /mnt >> /mnt/etc/fstab
     cp $0 /mnt/
     arch-chroot /mnt
