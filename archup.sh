@@ -57,7 +57,8 @@ if [ "$1" == "lightdm" ]; then
     sudo pacman -S lightdm
     sudo pacman -S lightdm-gtk-greeter
     sudo systemctl enable lightdm.service
-    sudo echo "xrandr --size 1680x1050" > /etc/lightdm/Xsetup
+    echo "xrandr --size 1680x1050" > Xsetup
+    sudo mv Xsetup /etc/lightdm/
     sudo chmod +x /etc/lightdm/Xsetup
     sudo vi /etc/lightdm/lightdm.conf
     reboot
