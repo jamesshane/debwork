@@ -152,12 +152,17 @@ if [ "$1" == "larbs" ]; then
     exit 1
 fi
 
-if [ "$1" == "vbox" ]; then
+if [ "$1" == "vboxold" ]; then
     echo -e "\nLoad guest installs in vbox:\n"
     read 
     pacman -S virtualbox-guest-iso linux-headers
     mount /dev/cdrom /mnt
     cd /mnt
     ./VBoxLinuxAdditions.run
+    reboot
+fi
+
+if [ "$1" == "vbox" ]; then
+    sudo pacman -S virtualbox-guest-utils
     reboot
 fi
