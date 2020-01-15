@@ -1,5 +1,11 @@
 #!/bin/bash
 
+
+if [ "$1" == "update" ]; then
+    sudo pacman -Syu 
+    sudo reflector --country 'United States' --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+fi
+
 if [ "$1" == "stage1" ]; then
     fdisk /dev/sda
     mkfs.ext4 /dev/sda1
@@ -20,7 +26,7 @@ if [ "$1" == "stage2" ]; then
     echo "zathras" >> /etc/hostname
     echo "zathras" >> /etc/hosts
     passwd
-    pacman -S grub dhcpcd git
+    pacman -S grub dhcpcd git wget reflector
     grub-install /dev/sda
     grub-mkconfig -o /boot/grub/grub.cfg
     exit 1
@@ -39,12 +45,10 @@ if [ "$1" == "user" ]; then
 fi
 
 if [ "$1" == "X" ]; then
-    sudo pacman -Syu
     sudo pacman -S xorg xorg-xinit mesa xorg-apps ttf-dejavu terminator thunar chromium
 fi
 
 if [ "$1" == "i3" ]; then
-    sudo pacman -Syu
     sudo pacman -S i3 
     echo -e "#"'!'"/bin/bash\n\nexec i3" > ~/.xinitrc
 fi
@@ -52,7 +56,10 @@ fi
 if [ "$1" == "lightdm" ]; then
     sudo pacman -S lightdm
     sudo pacman -S lightdm-gtk-greeter
-    sudo systemctl enable lightdm.service 
+    sudo systemctl enable lightdm.service
+    sudo echo "xrandr --size 1680x1050" > /etc/lightdm/Xsetup
+    sudo chmod +x /etc/lightdm/Xsetup
+    sudo vi /etc/lightdm/lightdm.conf
     reboot
 fi
 
@@ -81,13 +88,13 @@ if [ "$1" == "yay" ]; then
     cd ..
 fi
 
-if [ "$1" == "snap" ]; then
-	sudo snap install discord
-    sudo snap install code --classic
-    sudo snap install simplenote
+if [ "$1" == "apps" ]; then
+	yay -S discord
+    yay -S code 
+    yay -S simplenote
 fi
 
-if [ "$1" == "apps" ]; then
+if [ "$1" == "appsold" ]; then
     sudo pacman -Syu
     #sudo pacman -S --needed base-devel
     sudo pacman -S --needed xorg xorg-xinit virtualbox-guest-utils mesa xorg-serer-utils ttd-dejavu
