@@ -52,7 +52,7 @@ fi
 if [ "$1" == "lightdm" ]; then
     sudo pacman -S lightdm
     sudo pacman -S lightdm-gtk-greeter
-    systemctl enable lightdm.service 
+    sudo systemctl enable lightdm.service 
     reboot
 fi
 
