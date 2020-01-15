@@ -40,7 +40,7 @@ fi
 
 if [ "$1" == "X" ]; then
     sudo pacman -Syu
-    sudo pacman -S --needed xorg xorg-xinit virtualbox-guest-utils mesa xorg-server-utils ttd-dejavu terminator
+    sudo pacman -S --needed xorg xorg-xinit virtualbox-guest-utils mesa xorg-apps ttf-dejavu terminator
 fi
 
 if [ "$1" == "i3" ]; then
