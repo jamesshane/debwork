@@ -40,12 +40,12 @@ fi
 
 if [ "$1" == "X" ]; then
     sudo pacman -Syu
-    sudo pacman -S --needed xorg xorg-xinit virtualbox-guest-utils mesa xorg-apps ttf-dejavu terminator
+    sudo pacman -S xorg xorg-xinit virtualbox-guest-utils mesa xorg-apps ttf-dejavu terminator
 fi
 
 if [ "$1" == "i3" ]; then
     sudo pacman -Syu
-    subo pacman -S i3
+    sudo pacman -S i3
     echo -e "#"'!'"/bin/bash\n\nexec i3" > ~/.xinitrc
 fi
 
