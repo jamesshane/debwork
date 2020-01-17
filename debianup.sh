@@ -25,7 +25,7 @@ if [ "$1" == "vmdev" ]; then
 fi
 
 if [ "$1" == "i3" ]; then
-        sudo apt install i3 terminator chromium-browser dmenu thunar -y
+        sudo apt install i3 terminator chromium dmenu thunar -y
 fi
 
 if [ "$1" == "lightdm" ]; then
