@@ -25,7 +25,7 @@ if [ "$1" == "vmdev" ]; then
 fi
 
 if [ "$1" == "i3" ]; then
-        sudo apt install i3 terminator firefox chromium dmenu thunar -y
+        sudo apt install i3 terminator firefox-esr chromium dmenu thunar -y
 fi
 
 if [ "$1" == "lightdm" ]; then
@@ -45,9 +45,9 @@ if [ "$1" == "fixclock" ]; then
 fi
 
 if [ "$1" == "neofetch" ]; then
-	sudo add-apt-repository ppa:dawidd0811/neofetch-daily
-        sudo apt update
-        sudo apt install neofetch
+	#sudo add-apt-repository ppa:dawidd0811/neofetch-daily
+        #sudo apt update
+        sudo apt install neofetch -y
 	echo "neofetch" >> ~/.zshrc
 fi
 
