@@ -45,7 +45,7 @@ if [ "$1" == "user" ]; then
 fi
 
 if [ "$1" == "X" ]; then
-    sudo pacman -S xorg xorg-xinit mesa xorg-apps ttf-dejavu terminator thunar chromium
+    sudo pacman -S xorg xorg-xinit mesa xorg-apps ttf-dejavu terminator thunar chromium firefox
 fi
 
 if [ "$1" == "i3" ]; then
