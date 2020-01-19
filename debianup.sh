@@ -56,6 +56,7 @@ if [ "$1" == "snap" ]; then
 	sudo snap install discord
         sudo snap install code --classic
         sudo snap install simplenote
+        sudo snap install stickynotes
         echo -e "export $PATH:/snap/bin" >> ~/.xsessionrc
 fi
 
