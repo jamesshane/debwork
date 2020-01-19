@@ -19,7 +19,7 @@ if [ "$1" == "vmdev" ]; then
 fi
 
 if [ "$1" == "i3" ]; then
-        sudo apt install i3 terminator firefox chromium-browser dmenu thunar dwm tmux lilyterm -y
+        sudo apt install i3 terminator firefox chromium-browser dmenu thunar dwm tmux lilyterm htop -y
 fi
 
 if [ "$1" == "lightdm" ]; then
