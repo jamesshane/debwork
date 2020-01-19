@@ -52,9 +52,11 @@ if [ "$1" == "neofetch" ]; then
 fi
 
 if [ "$1" == "snap" ]; then
+        sudo apt install snapd -y
 	sudo snap install discord
         sudo snap install code --classic
         sudo snap install simplenote
+        echo -e "export $PATH:/snap/bin" >> ~/.xsessionrc
 fi
 
 if [ "$1" == "full" ]; then
@@ -63,8 +65,8 @@ if [ "$1" == "full" ]; then
         ./$0 i3
         ./$0 lightdm
         ./$0 vmdev
-        ./$0 snap
         ./$0 omz
         ./$0 neofetch
+        ./$0 snap
 fi
 
