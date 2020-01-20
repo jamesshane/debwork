@@ -29,7 +29,8 @@ if [ "$1" == "i3" ]; then
 fi
 
 if [ "$1" == "i3gc" ]; then
-        sudo apt install i3 terminator firefox-esr chromium dmenu thunar dwm tmux lilyterm htop tigervnc-common -yvncserver 
+        sudo apt install i3 terminator firefox-esr chromium dmenu thunar dwm tmux lilyterm htop tigervnc-standalone-server -y
+        vncserver 
         vncserver -kill :1
         rm ~/.vnc/xstartup
         echo -e "#"'!'"/bin/bash\n\dwm &" > ~/.vnc/xstartup
@@ -65,6 +66,8 @@ if [ "$1" == "snap" ]; then
         sudo snap install code --classic
         sudo snap install simplenote
         sudo snap install stickynotes
+        sudo snap install cordless
+        sudo snap install google-cloud-sdk
         echo -e "export $PATH:/snap/bin" >> ~/.xsessionrc
 fi
 
@@ -85,8 +88,8 @@ if [ "$1" == "fullgc" ]; then
         ./$0 i3cp
         #./$0 lightdm
         #./$0 vmdev
-        ./$0 omz
-        ./$0 neofetch
+        #./$0 omz
+        #./$0 neofetch
         ./$0 snap
 fi
 
