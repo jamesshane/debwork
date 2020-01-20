@@ -25,7 +25,15 @@ if [ "$1" == "vmdev" ]; then
 fi
 
 if [ "$1" == "i3" ]; then
-        sudo apt install i3 terminator firefox-esr chromium dmenu thunar dwm tmux lilyterm htop -y
+        sudo apt install i3 terminator firefox-esr chromium dmenu thunar dwm tmux lilyterm htop tigervnc-viewer -y
+fi
+
+if [ "$1" == "i3gc" ]; then
+        sudo apt install i3 terminator firefox-esr chromium dmenu thunar dwm tmux lilyterm htop tigervnc-common -yvncserver 
+        vncserver -kill :1
+        rm ~/.vnc/xstartup
+        echo -e "#"'!'"/bin/bash\n\dwm &" > ~/.vnc/xstartup
+        chmod +x ~/.vnc/xstartup
 fi
 
 if [ "$1" == "lightdm" ]; then
@@ -63,9 +71,20 @@ fi
 if [ "$1" == "full" ]; then
         ./$0 update
         ./$0 X
-        ./$0 i3
+        ./$0 i3cp
         ./$0 lightdm
         ./$0 vmdev
+        ./$0 omz
+        ./$0 neofetch
+        ./$0 snap
+fi
+
+if [ "$1" == "fullgc" ]; then
+        ./$0 update
+        ./$0 X
+        ./$0 i3cp
+        #./$0 lightdm
+        #./$0 vmdev
         ./$0 omz
         ./$0 neofetch
         ./$0 snap
