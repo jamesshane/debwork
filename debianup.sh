@@ -74,7 +74,7 @@ fi
 if [ "$1" == "full" ]; then
         ./$0 update
         ./$0 X
-        ./$0 i3cp
+        ./$0 i3
         ./$0 lightdm
         ./$0 vmdev
         ./$0 omz
@@ -85,7 +85,7 @@ fi
 if [ "$1" == "fullgc" ]; then
         ./$0 update
         ./$0 X
-        ./$0 i3cp
+        ./$0 i3gc
         #./$0 lightdm
         #./$0 vmdev
         #./$0 omz

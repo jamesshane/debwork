@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$1" == "" ]; then
-        echo "full"
+        echo "full desktop"
 fi
 
 if [ "$1" == "update" ]; then
@@ -19,7 +19,7 @@ if [ "$1" == "vmdev" ]; then
 fi
 
 if [ "$1" == "i3" ]; then
-        sudo apt install i3 terminator firefox chromium-browser dmenu thunar dwm tmux lilyterm htop -y
+        sudo apt install i3 terminator firefox chromium-browser dmenu thunar dwm tmux lilyterm htop vis tigervnc-viewer -y
 fi
 
 if [ "$1" == "lightdm" ]; then
@@ -50,11 +50,24 @@ if [ "$1" == "snap" ]; then
         sudo snap install code --classic
         sudo snap install simplenote
         sudo snap install stickynotes
+        sudo snap install cordless
+        sudo snap install google-cloud-sdk
 fi
 
 if [ "$1" == "full" ]; then
         ./$0 update
         ./$0 X
+        ./$0 i3
+        ./$0 lightdm
+        ./$0 vmdev
+        ./$0 snap
+        ./$0 omz
+        ./$0 neofetch
+fi
+
+if [ "$1" == "desktop" ]; then
+        ./$0 update
+        #./$0 X
         ./$0 i3
         ./$0 lightdm
         ./$0 vmdev
