@@ -24,12 +24,16 @@ if [ "$1" == "vmdev" ]; then
         sudo apt install linux-headers-$(uname -r) -y
 fi
 
+if [ "$1" == "xapps" ]; then
+        sudo apt install tmux lilyterm htop tigervnc-viewer stress cmatrix vis -y
+fi
+
 if [ "$1" == "i3" ]; then
-        sudo apt install i3 terminator firefox-esr chromium dmenu thunar dwm tmux lilyterm htop tigervnc-viewer -y
+        sudo apt install i3 terminator firefox-esr chromium dmenu thunar dwm -y
 fi
 
 if [ "$1" == "i3gc" ]; then
-        sudo apt install i3 terminator firefox-esr chromium dmenu thunar dwm tmux lilyterm htop tigervnc-standalone-server -y
+        ./$0 i3
         vncserver 
         vncserver -kill :1
         rm ~/.vnc/xstartup
@@ -65,7 +69,7 @@ if [ "$1" == "snap" ]; then
 	sudo snap install discord
         sudo snap install code --classic
         sudo snap install simplenote
-        sudo snap install stickynotes
+        #sudo snap install stickynotes
         sudo snap install cordless
         sudo snap install google-cloud-sdk
         echo -e "export $PATH:/snap/bin" >> ~/.xsessionrc
@@ -80,6 +84,7 @@ if [ "$1" == "full" ]; then
         ./$0 omz
         ./$0 neofetch
         ./$0 snap
+        ./$0 xapps
 fi
 
 if [ "$1" == "fullgc" ]; then
@@ -91,5 +96,18 @@ if [ "$1" == "fullgc" ]; then
         #./$0 omz
         #./$0 neofetch
         ./$0 snap
+        ./$0 xapps
+fi
+
+if [ "$1" == "desktop" ]; then
+        ./$0 update
+        #./$0 X
+        ./$0 i3
+        ./$0 lightdm
+        ./$0 vmdev
+        ./$0 omz
+        ./$0 neofetch
+        ./$0 snap
+        ./$0 xapps
 fi
 
