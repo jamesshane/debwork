@@ -72,7 +72,7 @@ if [ "$1" == "snap" ]; then
         #sudo snap install stickynotes
         sudo snap install cordless
         sudo snap install google-cloud-sdk
-        echo -e "export $PATH:/snap/bin" >> ~/.xsessionrc
+        echo -e "export PATH=$PATH:/snap/bin" >> ~/.xsessionrc
 fi
 
 if [ "$1" == "full" ]; then
