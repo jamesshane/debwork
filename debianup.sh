@@ -75,6 +75,23 @@ if [ "$1" == "snap" ]; then
         echo -e "export PATH=$PATH:/snap/bin" >> ~/.xsessionrc
 fi
 
+if [ "$1" == "lamp" ]; then
+        sudo apt install apache2 apache2-utils -y
+        #sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+        sudo chown www-data:www-data /var/www/html/ -R
+        sudo apt install mariadb-server mariadb-client
+        sudo mysql_secure_installation
+        sudo apt install php7.3 libapache2-mod-php7.3 php7.3-mysql php-common php7.3-cli php7.3-common php7.3-json php7.3-opcache php7.3-readline php7.3-curl -y
+        sudo a2enmod php7.3
+        sudo systemctl restart apache2
+        sudo echo -e "<?php phpinfo(); ?>" > /var/www/html/info.php
+        sudo a2dismod php7.3
+        sudo apt install php7.3-fpm -y
+        sudo a2enmod proxy_fcgi setenvif
+        sudo a2enconf php7.3-fpm
+        sudo systemctl restart apache2
+fi
+
 if [ "$1" == "full" ]; then
         ./$0 update
         ./$0 X
@@ -85,6 +102,7 @@ if [ "$1" == "full" ]; then
         ./$0 neofetch
         ./$0 snap
         ./$0 xapps
+        ./$0 lamp
 fi
 
 if [ "$1" == "fullgc" ]; then
@@ -97,6 +115,7 @@ if [ "$1" == "fullgc" ]; then
         #./$0 neofetch
         ./$0 snap
         ./$0 xapps
+        ./$0 lamp
 fi
 
 if [ "$1" == "desktop" ]; then
@@ -109,5 +128,6 @@ if [ "$1" == "desktop" ]; then
         ./$0 neofetch
         ./$0 snap
         ./$0 xapps
+        ./$0 lamp
 fi
 
