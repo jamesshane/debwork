@@ -92,6 +92,20 @@ if [ "$1" == "lamp" ]; then
         sudo systemctl restart apache2
 fi
 
+if [ "$1" == "mydevnode" ]; then
+        sudo apt-get install -y build-essential
+        curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+fi
+
+if [ "$1" == "mydevmongo" ]; thenc
+        wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+        sudo apt-get install gnupg -y 
+        echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+        sudo apt-get update
+        sudo apt-get install -y mongodb-org
+fi
+
 if [ "$1" == "full" ]; then
         ./$0 update
         ./$0 X
