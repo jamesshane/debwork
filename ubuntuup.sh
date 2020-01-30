@@ -64,14 +64,14 @@ if [ "$1" == "lamp" ]; then
         sudo chown www-data:www-data /var/www/html/ -R
         sudo apt install mariadb-server mariadb-client
         sudo mysql_secure_installation
-        sudo apt install php7.3 libapache2-mod-php7.3 php7.3-mysql php-common php7.3-cli php7.3-common php7.3-json php7.3-opcache php7.3-readline php7.3-curl -y
-        sudo a2enmod php7.3
+        sudo apt install php7.2 libapache2-mod-php7.2 php7.2-mysql php-common php7.2-cli php7.2-common php7.2-json php7.2-opcache php7.2-readline php7.2-curl -y
+        sudo a2enmod php7.2
         sudo systemctl restart apache2
         sudo echo -e "<?php phpinfo(); ?>" > /var/www/html/info.php
-        sudo a2dismod php7.3
-        sudo apt install php7.3-fpm -y
+        sudo a2dismod php7.2
+        sudo apt install php7.2-fpm -y
         sudo a2enmod proxy_fcgi setenvif
-        sudo a2enconf php7.3-fpm
+        sudo a2enconf php7.2-fpm
         sudo systemctl restart apache2
 fi
 
