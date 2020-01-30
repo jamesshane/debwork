@@ -25,7 +25,7 @@ if [ "$1" == "vmdev" ]; then
 fi
 
 if [ "$1" == "xapps" ]; then
-        sudo apt install tmux lilyterm htop tigervnc-viewer stress cmatrix vis -y
+        sudo apt install tmux lilyterm htop tigervnc-viewer stress cmatrix vis curl git -y
 fi
 
 if [ "$1" == "i3" ]; then

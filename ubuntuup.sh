@@ -18,8 +18,12 @@ if [ "$1" == "vmdev" ]; then
         sudo apt install linux-headers-$(uname -r) -y
 fi
 
+if [ "$1" == "xapps" ]; then
+        sudo apt install tmux lilyterm htop tigervnc-viewer stress cmatrix vis curl git -y
+fi
+
 if [ "$1" == "i3" ]; then
-        sudo apt install i3 terminator firefox chromium-browser dmenu thunar dwm tmux lilyterm htop vis tigervnc-viewer -y
+        sudo apt install i3 terminator firefox chromium-browser dmenu thunar dwm -y
 fi
 
 if [ "$1" == "lightdm" ]; then
@@ -54,6 +58,23 @@ if [ "$1" == "snap" ]; then
         sudo snap install google-cloud-sdk
 fi
 
+if [ "$1" == "lamp" ]; then
+        sudo apt install apache2 apache2-utils -y
+        #sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+        sudo chown www-data:www-data /var/www/html/ -R
+        sudo apt install mariadb-server mariadb-client
+        sudo mysql_secure_installation
+        sudo apt install php7.2 libapache2-mod-php7.2 php7.2-mysql php-common php7.2-cli php7.2-common php7.2-json php7.2-opcache php7.2-readline php7.2-curl -y
+        sudo a2enmod php7.2
+        sudo systemctl restart apache2
+        sudo echo -e "<?php phpinfo(); ?>" > /var/www/html/info.php
+        sudo a2dismod php7.2
+        sudo apt install php7.2-fpm -y
+        sudo a2enmod proxy_fcgi setenvif
+        sudo a2enconf php7.2-fpm
+        sudo systemctl restart apache2
+fi
+
 if [ "$1" == "full" ]; then
         ./$0 update
         ./$0 X
@@ -63,6 +84,8 @@ if [ "$1" == "full" ]; then
         ./$0 snap
         ./$0 omz
         ./$0 neofetch
+        ./$0 xapps
+        ./$0 lamp
 fi
 
 if [ "$1" == "desktop" ]; then
@@ -74,5 +97,7 @@ if [ "$1" == "desktop" ]; then
         ./$0 snap
         ./$0 omz
         ./$0 neofetch
+        ./$0 xapps
+        ./$0 lamp
 fi
 
