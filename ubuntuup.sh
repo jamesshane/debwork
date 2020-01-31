@@ -53,9 +53,9 @@ if [ "$1" == "snap" ]; then
 	sudo snap install discord
         sudo snap install code --classic
         sudo snap install simplenote
-        sudo snap install stickynotes
+        #sudo snap install stickynotes
         sudo snap install cordless
-        sudo snap install google-cloud-sdk
+        sudo snap install google-cloud-sdk --classic
 fi
 
 if [ "$1" == "lamp" ]; then
