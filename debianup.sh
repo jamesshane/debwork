@@ -98,9 +98,9 @@ if [ "$1" == "mydevnode" ]; then
         sudo apt-get install -y nodejs
 fi
 
-if [ "$1" == "mydevmongo" ]; thenc
-        wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+if [ "$1" == "mydevmongo" ]; then
         sudo apt-get install gnupg -y 
+        wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
         echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
         sudo apt-get update
         sudo apt-get install -y mongodb-org
