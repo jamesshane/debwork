@@ -71,7 +71,7 @@ if [ "$1" == "snap" ]; then
         sudo snap install simplenote
         #sudo snap install stickynotes
         sudo snap install cordless
-        sudo snap install google-cloud-sdk
+        sudo snap install google-cloud-sdk --classic
         echo -e "export PATH=$PATH:/snap/bin" >> ~/.xsessionrc
 fi
 
