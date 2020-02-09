@@ -66,6 +66,7 @@ if [ "$1" == "snap" ]; then
 fi
 
 if [ "$1" == "lamp" ]; then
+        sudo apt-get install -y build-essential
         sudo apt install apache2 apache2-utils -y
         #sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
         sudo chown www-data:www-data /var/www/html/ -R
@@ -89,6 +90,7 @@ if [ "$1" == "mydevnode" ]; then
 fi
 
 if [ "$1" == "mydevmongo" ]; then
+        sudo apt-get install -y build-essential
         sudo apt-get install gnupg -y 
         wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
         echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
@@ -98,8 +100,9 @@ fi
 
 if [ "$1" == "mydevyarn" ]; then
         sudo apt-get install -y build-essential
-        curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
-        sudo apt-get install -y nodejs
+        curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+        echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+        sudo apt-get update && sudo apt-get install yarn
 fi
 
 if [ "$1" == "full" ]; then
