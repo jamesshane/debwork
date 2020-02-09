@@ -3,7 +3,7 @@
 #cc33ff - purple
 
 if [ "$1" == "" ]; then
-echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo"
+echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn"
 fi
 
 if [ "$1" == "update" ]; then
@@ -96,6 +96,12 @@ if [ "$1" == "mydevmongo" ]; then
         sudo apt-get install -y mongodb-org
 fi
 
+if [ "$1" == "mydevyarn" ]; then
+        sudo apt-get install -y build-essential
+        curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+fi
+
 if [ "$1" == "full" ]; then
         ./$0 update
         ./$0 X
@@ -106,7 +112,7 @@ if [ "$1" == "full" ]; then
         ./$0 omz
         ./$0 neofetch
         ./$0 xapps
-        ./$0 lamp
+        #./$0 lamp
 fi
 
 if [ "$1" == "min" ]; then
@@ -135,6 +141,7 @@ if [ "$1" == "fulldev" ]; then
         ./$0 lamp
         ./$0 mydevnode
         ./$0 mydevmongo
+        ./$0 mydevyarn
 fi
 
 if [ "$1" == "dev" ]; then
@@ -142,18 +149,19 @@ if [ "$1" == "dev" ]; then
         ./$0 lamp
         ./$0 mydevnode
         ./$0 mydevmongo
+        ./$0 mydevyarn
 fi
 
 if [ "$1" == "desktop" ]; then
         ./$0 update
         #./$0 X
         ./$0 i3
-        ./$0 lightdm
+        #./$0 lightdm
         ./$0 vmdev
         ./$0 snap
         ./$0 omz
         ./$0 neofetch
         ./$0 xapps
-        ./$0 lamp
+        #./$0 lamp
 fi
 
