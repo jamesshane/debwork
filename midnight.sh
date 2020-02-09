@@ -75,7 +75,8 @@ if [ "$1" == "lamp" ]; then
         sudo apt install php7.2 libapache2-mod-php7.2 php7.2-mysql php-common php7.2-cli php7.2-common php7.2-json php7.2-opcache php7.2-readline php7.2-curl -y
         sudo a2enmod php7.2
         sudo systemctl restart apache2
-        sudo echo -e "<?php phpinfo(); ?>" > /var/www/html/info.php
+        echo -e "<?php phpinfo(); ?>" > info.php
+        sudo mv info.php /var/www/html/
         sudo a2dismod php7.2
         sudo apt install php7.2-fpm -y
         sudo a2enmod proxy_fcgi setenvif
@@ -102,7 +103,7 @@ if [ "$1" == "mydevyarn" ]; then
         sudo apt-get install -y build-essential
         curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
         echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-        sudo apt-get update && sudo apt-get install yarn
+        sudo apt-get update && sudo apt-get install yarn -y
 fi
 
 if [ "$1" == "full" ]; then
