@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#cc33ff - purple
+
 if [ "$1" == "" ]; then
 echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo"
 fi
