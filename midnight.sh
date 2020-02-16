@@ -3,7 +3,7 @@
 #cc33ff - purple
 
 if [ "$1" == "" ]; then
-echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn"
+echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserver"
 fi
 
 if [ "$1" == "update" ]; then
@@ -104,6 +104,19 @@ if [ "$1" == "mydevyarn" ]; then
         curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
         echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
         sudo apt-get update && sudo apt-get install yarn -y
+fi
+
+if [ "$1" == "vncserver" ]; then
+        sudo apt install tightvncserver -y
+        echo -e "\nPassword for vncserver:\n";
+        vncserver 
+        vncserver -kill :1
+        #rm ~/.vnc/xstartup
+        #echo -e "#"'!'"/bin/bash\n\nwmii &" > ~/.vnc/xstartup
+        #chmod +x ~/.vnc/xstartup
+        #sudo snap install simplenote && wmii
+        #sed -i 's/4/1/' .wmii/wmiirc_local
+        vncserver
 fi
 
 if [ "$1" == "full" ]; then
