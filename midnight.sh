@@ -30,7 +30,7 @@ if [ "$1" == "i3" ]; then
         sudo add-apt-repository ppa:aacebedo/libi3ipc-glib
         sudo add-apt-repository ppa:aacebedo/xfce4-i3-workspaces-plugin
         sudo apt-get update
-        sudo apt install i3-gaps libi3ipc-glib xfce4-i3-workspaces-plugin -y
+        sudo apt install i3-gaps libi3ipc-glib xfce4-i3-workspaces-plugin rofi -y
 fi
 
 if [ "$1" == "lightdm" ]; then
@@ -111,9 +111,10 @@ if [ "$1" == "vncserver" ]; then
         echo -e "\nPassword for vncserver:\n";
         vncserver 
         vncserver -kill :1
-        #rm ~/.vnc/xstartup
+        rm ~/.vnc/xstartup
         #echo -e "#"'!'"/bin/bash\n\nwmii &" > ~/.vnc/xstartup
-        #chmod +x ~/.vnc/xstartup
+        echo -e "#"'!'"/bin/bash\nxrdb $HOME/.Xresources\nstartxfce4 &" > ~/.vnc/xstartup
+        chmod +x ~/.vnc/xstartup
         #sudo snap install simplenote && wmii
         #sed -i 's/4/1/' .wmii/wmiirc_local
         vncserver
