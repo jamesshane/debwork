@@ -3,7 +3,7 @@
 #cc33ff - purple
 
 if [ "$1" == "" ]; then
-echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserver"
+echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserver min(dwm)"
 fi
 
 if [ "$1" == "update" ]; then
@@ -42,7 +42,7 @@ if [ "$1" == "dwm" ]; then
         sudo add-apt-repository ppa:enlightenment-git/ppa -y
         sudo apt-get update
         sudo apt-get install enlightenment terminology -y
-        sudo apt install dwm dmenu -y
+        sudo apt install dwm dmenu firefox -y
 fi
 
 if [ "$1" == "lightdm" ]; then
