@@ -15,13 +15,17 @@ if [ "$1" == "X" ]; then
         sudo apt install xubuntu-desktop -y
 fi
 
+if [ "$1" == "Xmin" ]; then
+        sudo apt install xorg xinit -y
+fi
+
 if [ "$1" == "vmdev" ]; then
         sudo apt install gcc make perl -y
         sudo apt install linux-headers-$(uname -r) -y
 fi
 
 if [ "$1" == "xapps" ]; then
-        sudo apt install tmux terminator chromium-browser lilyterm htop tigervnc-viewer stress cmatrix vis curl git -y
+        sudo apt install tmux terminator chromium-browser firefox lilyterm htop tigervnc-viewer stress cmatrix vis curl git -y
 fi
 
 if [ "$1" == "i3" ]; then
@@ -30,7 +34,14 @@ if [ "$1" == "i3" ]; then
         sudo add-apt-repository ppa:aacebedo/libi3ipc-glib
         sudo add-apt-repository ppa:aacebedo/xfce4-i3-workspaces-plugin
         sudo apt-get update
-        sudo apt install i3-gaps libi3ipc-glib xfce4-i3-workspaces-plugin rofi -y
+        sudo apt install i3-gaps libi3ipc-glib xfce4-i3-workspaces-plugin rofi dwm nitrogen -y
+fi
+
+if [ "$1" == "dwm" ]; then
+        sudo add-apt-repository ppa:enlightenment-git/ppa
+        sudo apt-get update
+        sudo apt-get install terminology -y
+        sudo apt dwm dmenu -y
 fi
 
 if [ "$1" == "lightdm" ]; then
@@ -135,15 +146,14 @@ fi
 
 if [ "$1" == "min" ]; then
         ./$0 update
-        ./$0 X
-        ./$0 i3
-        #./$0 lightdm
+        ./$0 Xmin
+        ./$0 dwm
+        ./$0 lightdm
         ./$0 vmdev
         #./$0 snap
         #./$0 omz
         #./$0 neofetch
         #./$0 xapps
-        #./$0 lamp
 fi
 
 if [ "$1" == "fulldev" ]; then
