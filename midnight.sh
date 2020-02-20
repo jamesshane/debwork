@@ -38,10 +38,10 @@ if [ "$1" == "i3" ]; then
 fi
 
 if [ "$1" == "dwm" ]; then
-        sudo add-apt-repository ppa:enlightenment-git/ppa
+        sudo add-apt-repository ppa:niko2040/e19
         sudo apt-get update
-        sudo apt-get install terminology -y
-        sudo apt dwm dmenu -y
+        sudo apt-get install enlightenment -y
+        sudo apt install dwm dmenu -y
 fi
 
 if [ "$1" == "lightdm" ]; then
