@@ -30,17 +30,18 @@ fi
 
 if [ "$1" == "i3" ]; then
         #sudo apt install i3 terminator firefox chromium-browser dmenu thunar dwm -y
-        sudo add-apt-repository ppa:kgilmer/speed-ricer
-        sudo add-apt-repository ppa:aacebedo/libi3ipc-glib
-        sudo add-apt-repository ppa:aacebedo/xfce4-i3-workspaces-plugin
+        sudo add-apt-repository ppa:kgilmer/speed-ricer -y
+        sudo add-apt-repository ppa:aacebedo/libi3ipc-glib -y
+        sudo add-apt-repository ppa:aacebedo/xfce4-i3-workspaces-plugin -y
         sudo apt-get update
         sudo apt install i3-gaps libi3ipc-glib xfce4-i3-workspaces-plugin rofi dwm nitrogen -y
 fi
 
 if [ "$1" == "dwm" ]; then
-        sudo add-apt-repository ppa:niko2040/e19
+        sudo add-apt-repository ppa:niko2040/e19 -y
+        sudo add-apt-repository ppa:enlightenment-git/ppa -y
         sudo apt-get update
-        sudo apt-get install enlightenment -y
+        sudo apt-get install enlightenment terminology -y
         sudo apt install dwm dmenu -y
 fi
 
@@ -61,7 +62,7 @@ if [ "$1" == "fixclock" ]; then
 fi
 
 if [ "$1" == "neofetch" ]; then
-	sudo add-apt-repository ppa:dawidd0811/neofetch-daily
+	sudo add-apt-repository ppa:dawidd0811/neofetch-daily -y
         sudo apt update
         sudo apt install neofetch
 	echo "neofetch" >> ~/.zshrc
