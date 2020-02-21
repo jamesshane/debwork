@@ -43,6 +43,7 @@ if [ "$1" == "dwm" ]; then
 #        sudo apt-get update enlightenment
         sudo apt-get install terminology -y
         sudo apt install dwm dmenu firefox -y
+        echo -e "exec dwm" > .xinitrc
 fi
 
 if [ "$1" == "lightdm" ]; then
