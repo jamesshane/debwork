@@ -133,6 +133,17 @@ if [ "$1" == "vncserver" ]; then
         vncserver
 fi
 
+if [ "$1" == "ultratiny" ]; then
+        sudo apt install xinit i3 git firefox linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
+        sudo usermod -aG docker $USER
+        reboot
+fi
+
+if [ "$1" == "dockervm" ]; then
+        Xephyr :1 -ac -br -screen 1024x768 -resizeable -reset -terminate &
+        docker run -it -e DISPLAY=:1 --device /dev/snd -v /tmp/.X11-unix:/tmp/.X11-unix csicar/ubuntu-mate-desktop /usr/bin/mate-session
+fi
+
 if [ "$1" == "full" ]; then
         ./$0 update
         ./$0 X
