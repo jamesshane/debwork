@@ -149,7 +149,7 @@ if [ "$1" == "min" ]; then
         ./$0 update
         ./$0 Xmin
         ./$0 dwm
-        ./$0 lightdm
+        #./$0 lightdm
         ./$0 vmdev
         #./$0 snap
         #./$0 omz
