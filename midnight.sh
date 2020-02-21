@@ -16,7 +16,7 @@ if [ "$1" == "X" ]; then
 fi
 
 if [ "$1" == "Xmin" ]; then
-        sudo apt install xorg xinit -y
+        sudo apt install xinit -y # xorg
 fi
 
 if [ "$1" == "vmdev" ]; then
@@ -25,7 +25,7 @@ if [ "$1" == "vmdev" ]; then
 fi
 
 if [ "$1" == "xapps" ]; then
-        sudo apt install tmux terminator chromium-browser firefox lilyterm htop tigervnc-viewer stress cmatrix vis curl git -y
+        sudo apt install tmux terminator chromium-browser lilyterm htop tigervnc-viewer stress cmatrix vis curl git -y
 fi
 
 if [ "$1" == "i3" ]; then
@@ -34,14 +34,14 @@ if [ "$1" == "i3" ]; then
         sudo add-apt-repository ppa:aacebedo/libi3ipc-glib -y
         sudo add-apt-repository ppa:aacebedo/xfce4-i3-workspaces-plugin -y
         sudo apt-get update
-        sudo apt install i3-gaps libi3ipc-glib xfce4-i3-workspaces-plugin rofi dwm nitrogen -y
+        sudo apt install i3-gaps libi3ipc-glib xfce4-i3-workspaces-plugin rofi dwm nitrogen firefox terminology -y
 fi
 
 if [ "$1" == "dwm" ]; then
 #        sudo add-apt-repository ppa:niko2040/e19 -y
 #        sudo add-apt-repository ppa:enlightenment-git/ppa -y
 #        sudo apt-get update enlightenment
-        sudo apt-get install terminology -y
+        sudo apt-get install -y
         sudo apt install dwm dmenu firefox -y
         echo -e "exec dwm" > .xinitrc
 fi
