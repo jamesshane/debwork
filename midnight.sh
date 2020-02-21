@@ -38,10 +38,10 @@ if [ "$1" == "i3" ]; then
 fi
 
 if [ "$1" == "dwm" ]; then
-        sudo add-apt-repository ppa:niko2040/e19 -y
-        sudo add-apt-repository ppa:enlightenment-git/ppa -y
-        sudo apt-get update
-        sudo apt-get install enlightenment terminology -y
+#        sudo add-apt-repository ppa:niko2040/e19 -y
+#        sudo add-apt-repository ppa:enlightenment-git/ppa -y
+#        sudo apt-get update enlightenment
+        sudo apt-get install terminology -y
         sudo apt install dwm dmenu firefox -y
 fi
 
