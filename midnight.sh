@@ -16,7 +16,7 @@ if [ "$1" == "X" ]; then
 fi
 
 if [ "$1" == "Xmin" ]; then
-        sudo apt install xinit -y # xorg
+        sudo apt install xinit xorg -y 
 fi
 
 if [ "$1" == "vmdev" ]; then
@@ -134,7 +134,7 @@ if [ "$1" == "vncserver" ]; then
 fi
 
 if [ "$1" == "ultratiny" ]; then
-        sudo apt install xinit i3 git firefox linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
+        sudo apt install xinit xorg i3 git firefox linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
         sudo usermod -aG docker $USER
         reboot
 fi
