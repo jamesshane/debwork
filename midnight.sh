@@ -3,7 +3,7 @@
 #cc33ff - purple
 
 if [ "$1" == "" ]; then
-echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserver min(dwm)"
+echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserver min(dwm) ultratiny(i3) ultratinydwm(dwm)"
 fi
 
 if [ "$1" == "update" ]; then
@@ -135,6 +135,12 @@ fi
 
 if [ "$1" == "ultratiny" ]; then
         sudo apt install xinit xorg i3 git firefox linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
+        sudo usermod -aG docker $USER
+        reboot
+fi
+
+if [ "$1" == "ultratinydwm" ]; then
+        sudo apt install xinit xorg dwm git firefox linux-headers-$(uname -r) gcc perl make x11-xserver-utils xserver-xephyr docker.io -y
         sudo usermod -aG docker $USER
         reboot
 fi
