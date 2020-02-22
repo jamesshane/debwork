@@ -156,6 +156,10 @@ if [ "$1" == "dockervm" ]; then
         docker run -it -e DISPLAY=:1 --device /dev/snd -v /tmp/.X11-unix:/tmp/.X11-unix csicar/ubuntu-mate-desktop /usr/bin/mate-session
 fi
 
+if [ "$1" == "dockerx" ]; then
+        Xephyr :1 -ac -br -screen 1024x768 -resizeable -reset -terminate &
+fi
+
 if [ "$1" == "full" ]; then
         ./$0 update
         ./$0 X
