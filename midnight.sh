@@ -3,7 +3,7 @@
 #cc33ff - purple
 
 if [ "$1" == "" ]; then
-echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserver min(dwm) ultratiny(i3) ultratinydwm(dwm)"
+echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserver gitprep min(dwm) ultratiny(i3) ultratinydwm(dwm)"
 fi
 
 if [ "$1" == "update" ]; then
@@ -13,6 +13,12 @@ fi
 
 if [ "$1" == "X" ]; then
         sudo apt install xubuntu-desktop -y
+fi
+
+if [ "$1" == "gitprep" ]; then
+        git config --global user.name "James Shane"
+        git config --global user.email "jamesshane@gmail.com"
+        git config --global credential.helper store
 fi
 
 if [ "$1" == "Xmin" ]; then
