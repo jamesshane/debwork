@@ -146,7 +146,7 @@ if [ "$1" == "ultratiny" ]; then
 fi
 
 if [ "$1" == "ultratinydwm" ]; then
-        sudo apt install xinit xorg dwm git firefox linux-headers-$(uname -r) gcc perl make x11-xserver-utils xserver-xephyr docker.io -y
+        sudo apt install xinit xorg dwm git firefox linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
         sudo usermod -aG docker $USER
         reboot
 fi
