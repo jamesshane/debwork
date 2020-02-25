@@ -142,18 +142,21 @@ fi
 if [ "$1" == "ultratiny" ]; then
         sudo apt install xinit xorg i3 git firefox linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
         sudo usermod -aG docker $USER
+        sudo snap install code --classic
         reboot
 fi
 
 if [ "$1" == "ultratinydwm" ]; then
         sudo apt install xinit xorg dwm git firefox linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
         sudo usermod -aG docker $USER
+        sudo snap install code --classic
         reboot
 fi
 
 if [ "$1" == "ultratinywmii" ]; then
         sudo apt install xinit xorg wmii git firefox linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
         sudo usermod -aG docker $USER
+        sudo snap install code --classic
         reboot
 fi
 
