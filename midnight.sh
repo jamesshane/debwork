@@ -154,7 +154,7 @@ if [ "$1" == "ultratinydwm" ]; then
 fi
 
 if [ "$1" == "ultratinywmii" ]; then
-        sudo apt install xinit xorg wmii git firefox linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
+        sudo apt install xinit xorg wmii git firefox terminology linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
         echo -e "exec wmii" > .xinitrc
         sudo usermod -aG docker $USER
         sudo snap install code --classic
