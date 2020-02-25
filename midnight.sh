@@ -155,6 +155,7 @@ fi
 
 if [ "$1" == "ultratinywmii" ]; then
         sudo apt install xinit xorg wmii git firefox linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
+        echo -e "exec wmii" > .xinitrc
         sudo usermod -aG docker $USER
         sudo snap install code --classic
         reboot
