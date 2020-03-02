@@ -125,7 +125,7 @@ if [ "$1" == "mydevyarn" ]; then
 fi
 
 if [ "$1" == "vncserverxfce" ]; then
-        sudo apt install tightvncserver -y
+        sudo apt install tigervnc-standalone-server tigervnc-common tigervnc-xorg-extension -y
         echo -e "\nPassword for vncserver:\n";
         vncserver 
         vncserver -kill :1
@@ -139,7 +139,7 @@ if [ "$1" == "vncserverxfce" ]; then
 fi
 
 if [ "$1" == "vncserverdwm" ]; then
-        sudo apt install tightvncserver -y
+        sudo apt install tigervnc-standalone-server tigervnc-common tigervnc-xorg-extension -y
         echo -e "\nPassword for vncserver:\n";
         vncserver 
         vncserver -kill :1
@@ -150,7 +150,7 @@ if [ "$1" == "vncserverdwm" ]; then
 fi
 
 if [ "$1" == "vncserverwmii" ]; then
-        sudo apt install tightvncserver -y
+        sudo apt install tigervnc-standalone-server tigervnc-common tigervnc-xorg-extension -y
         echo -e "\nPassword for vncserver:\n";
         vncserver 
         vncserver -kill :1
