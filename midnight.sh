@@ -3,7 +3,7 @@
 #cc33ff - purple
 
 if [ "$1" == "" ]; then
-echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserver gitprep min(dwm) ultratiny(i3) ultratinydwm(dwm) ultratinywmii(wmii)"
+echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserverxfce vncserverdwm vncserverwmii gitprep min(dwm) ultratiny(i3) ultratinydwm(dwm) ultratinywmii(wmii)"
 fi
 
 if [ "$1" == "update" ]; then
@@ -79,7 +79,6 @@ if [ "$1" == "snap" ]; then
 	sudo snap install discord
         sudo snap install code --classic
         sudo snap install simplenote
-        #sudo snap install stickynotes
         sudo snap install cordless
         sudo snap install google-cloud-sdk --classic
 fi
@@ -125,7 +124,7 @@ if [ "$1" == "mydevyarn" ]; then
         sudo apt-get update && sudo apt-get install yarn -y
 fi
 
-if [ "$1" == "vncserver" ]; then
+if [ "$1" == "vncserverxfce" ]; then
         sudo apt install tightvncserver -y
         echo -e "\nPassword for vncserver:\n";
         vncserver 
@@ -139,15 +138,39 @@ if [ "$1" == "vncserver" ]; then
         vncserver
 fi
 
+if [ "$1" == "vncserverdwm" ]; then
+        sudo apt install tightvncserver -y
+        echo -e "\nPassword for vncserver:\n";
+        vncserver 
+        vncserver -kill :1
+        rm ~/.vnc/xstartup
+        echo -e "#"'!'"/bin/bash\n\dwm &" > ~/.vnc/xstartup
+        chmod +x ~/.vnc/xstartup
+        vncserver
+fi
+
+if [ "$1" == "vncserverwmii" ]; then
+        sudo apt install tightvncserver -y
+        echo -e "\nPassword for vncserver:\n";
+        vncserver 
+        vncserver -kill :1
+        rm ~/.vnc/xstartup
+        echo -e "#"'!'"/bin/bash\n\nwmii &" > ~/.vnc/xstartup
+        chmod +x ~/.vnc/xstartup
+        wmii
+        sed -i 's/4/1/' .wmii/wmiirc_local
+        vncserver
+fi
+
 if [ "$1" == "ultratiny" ]; then
-        sudo apt install xinit xorg i3 git firefox linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
+        sudo apt install xinit xorg i3 git firefox terminology linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
         sudo usermod -aG docker $USER
         sudo snap install code --classic
         reboot
 fi
 
 if [ "$1" == "ultratinydwm" ]; then
-        sudo apt install xinit xorg dwm git firefox linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
+        sudo apt install xinit xorg dwm git firefox terminology linux-headers-$(uname -r) gcc perl make x11-xserver-utils snapd xserver-xephyr docker.io -y
         sudo usermod -aG docker $USER
         sudo snap install code --classic
         reboot
@@ -163,7 +186,7 @@ fi
 
 if [ "$1" == "dockervm" ]; then
         Xephyr :1 -ac -br -screen 1024x768 -resizeable -reset -terminate &
-        docker container run --name mate --detach -it -e DISPLAY=:1 --device /dev/snd -v /tmp/.X11-unix:/tmp/.X11-unix csicar/dockerwm /usr/bin/mate-session
+        docker container run --name mate --detach -it -e DISPLAY=:1 --device /dev/snd -v /dev/shm:/dev/shm -v /tmp/.X11-unix:/tmp/.X11-unix csicar/dockerwm /usr/bin/mate-session
 fi
 
 if [ "$1" == "dockerx" ]; then
