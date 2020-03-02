@@ -185,8 +185,8 @@ if [ "$1" == "ultratinywmii" ]; then
 fi
 
 if [ "$1" == "dockervm" ]; then
-        Xephyr :1 -ac -br -screen 1024x768 -resizeable -reset -terminate &
-        docker container run --name mate --detach -it -e DISPLAY=:1 --device /dev/snd -v /dev/shm:/dev/shm -v /tmp/.X11-unix:/tmp/.X11-unix csicar/dockerwm /usr/bin/mate-session
+        Xephyr :10 -ac -br -screen 1024x768 -resizeable -reset -terminate &
+        docker container run --name mate --detach -it -e DISPLAY=:10 --device /dev/snd -v /dev/shm:/dev/shm -v /tmp/.X11-unix:/tmp/.X11-unix csicar/dockerwm /usr/bin/mate-session
 fi
 
 if [ "$1" == "dockerx" ]; then
