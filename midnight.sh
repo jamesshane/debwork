@@ -242,15 +242,15 @@ if [ "$1" == "dev" ]; then
         ./$0 mydevyarn
 fi
 
-if [ "$1" == "desktop" ]; then
+if [ "$1" == "desktopgc" ]; then
         ./$0 update
-        #./$0 X
-        ./$0 i3
+        ./$0 X
+        #./$0 i3
         #./$0 lightdm
-        ./$0 vmdev
+        #./$0 vmdev
         ./$0 snap
-        ./$0 omz
-        ./$0 neofetch
+        #./$0 omz
+        #./$0 neofetch
         ./$0 xapps
         #./$0 lamp
 fi
