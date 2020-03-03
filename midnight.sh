@@ -47,7 +47,7 @@ if [ "$1" == "dwm" ]; then
 #        sudo add-apt-repository ppa:niko2040/e19 -y
 #        sudo add-apt-repository ppa:enlightenment-git/ppa -y
 #        sudo apt-get update enlightenment
-        sudo apt-get install -y
+        #sudo apt-get install -y
         sudo apt install dwm dmenu firefox -y
         echo -e "exec dwm" > .xinitrc
 fi
@@ -249,6 +249,19 @@ if [ "$1" == "desktopgc" ]; then
         #./$0 lightdm
         #./$0 vmdev
         ./$0 snap
+        #./$0 omz
+        #./$0 neofetch
+        ./$0 xapps
+        #./$0 lamp
+fi
+
+if [ "$1" == "desktop" ]; then
+        ./$0 update
+        #./$0 X
+        ./$0 i3
+        ./$0 lightdm
+        #./$0 vmdev
+        #./$0 snap
         #./$0 omz
         #./$0 neofetch
         ./$0 xapps
