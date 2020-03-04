@@ -102,6 +102,10 @@ if [ "$1" == "lamp" ]; then
         sudo systemctl restart apache2
 fi
 
+if [ "$1" == "docker" ]; then
+        sudo apt install build-essential xserver-xephyr docker.io -y
+fi
+
 if [ "$1" == "mydevnode" ]; then
         sudo apt-get install -y build-essential
         curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
