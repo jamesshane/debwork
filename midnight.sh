@@ -31,7 +31,7 @@ if [ "$1" == "vmdev" ]; then
 fi
 
 if [ "$1" == "xapps" ]; then
-        sudo apt install tmux terminator chromium-browser lilyterm htop tigervnc-viewer stress cmatrix vis curl git -y
+        sudo apt install tmux terminator chromium-browser lilyterm htop tigervnc-viewer stress cmatrix curl git -y
 fi
 
 if [ "$1" == "i3" ]; then
@@ -191,6 +191,38 @@ fi
 
 if [ "$1" == "dockerx" ]; then
         Xephyr :1 -ac -br -screen 1024x768 -resizeable -reset -terminate &
+fi
+
+if [ "$1" == "powerline" ]; then
+        sudo apt-get install python-pip git
+        sudo su -c 'pip install git+git://github.com/Lokaltog/powerline'
+                #in .profile
+                #if [ -d "$HOME/.local/bin" ]; then
+                #        PATH="$HOME/.local/bin:$PATH"
+                #fi
+        wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+        sudo mv PowerlineSymbols.otf /usr/share/fonts/
+        sudo fc-cache -vf
+        sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
+                #in .vimrc
+                #set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+                #
+                #" Always show statusline
+                #set laststatus=2
+                #
+                #" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+                #set t_Co=256
+                #in .bashrc
+                #if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
+                #        source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
+                #fi
+                #in .zshrc
+                #if [[ -r /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh ]]; then
+                #        source /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
+                #fi
+                #in .tmux.conf
+                #source /usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf
+                #set-option -g default-terminal "screen-256color"
 fi
 
 if [ "$1" == "full" ]; then
