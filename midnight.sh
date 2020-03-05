@@ -3,7 +3,7 @@
 #cc33ff - purple
 
 if [ "$1" == "" ]; then
-echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserverxfce vncserverdwm vncserverwmii gitprep min(dwm) ultratiny(i3) ultratinydwm(dwm) ultratinywmii(wmii) docker dockervminstall dockerx"
+echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserverxfce vncserverdwm vncserverwmii gitprep min(dwm) ultratiny(i3) ultratinydwm(dwm) ultratinywmii(wmii) docker dockerwminstall dockerx"
 fi
 
 if [ "$1" == "update" ]; then
@@ -189,9 +189,9 @@ if [ "$1" == "ultratinywmii" ]; then
         reboot
 fi
 
-if [ "$1" == "dockervminstall" ]; then
+if [ "$1" == "dockerwminstall" ]; then
         git clone https://github.com/csicar/dockerwm.git
-        cd dockervm
+        cd dockerwm
         docker build -t csicar/dockerwm .
         Xephyr :10 -ac -br -screen 1024x768 -resizeable -reset -terminate &
         docker container run --name mate --detach -it -e DISPLAY=:10 --device /dev/snd -v /dev/shm:/dev/shm -v /tmp/.X11-unix:/tmp/.X11-unix csicar/dockerwm /usr/bin/mate-session
