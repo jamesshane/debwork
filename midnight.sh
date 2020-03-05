@@ -3,7 +3,7 @@
 #cc33ff - purple
 
 if [ "$1" == "" ]; then
-echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserverxfce vncserverdwm vncserverwmii gitprep min(dwm) ultratiny(i3) ultratinydwm(dwm) ultratinywmii(wmii)"
+echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserverxfce vncserverdwm vncserverwmii gitprep min(dwm) ultratiny(i3) ultratinydwm(dwm) ultratinywmii(wmii) docker"
 fi
 
 if [ "$1" == "update" ]; then
@@ -104,6 +104,7 @@ fi
 
 if [ "$1" == "docker" ]; then
         sudo apt install build-essential xserver-xephyr docker.io -y
+        sudo usermod -aG docker $USER
 fi
 
 if [ "$1" == "mydevnode" ]; then
