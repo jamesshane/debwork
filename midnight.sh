@@ -202,7 +202,7 @@ if [ "$1" == "midnightdockerinstall" ]; then
         cd midnightdocker
         docker build -t midnightgrey .
         Xephyr :10 -ac -br -screen 1024x768 -resizeable -reset -terminate &
-        docker container run --name midg --detach -it -e DISPLAY=:10 --device /dev/snd -v /dev/shm:/dev/shm -v /tmp/.X11-unix:/tmp/.X11-unix midnightgrey /usr/bin/xfce4-session
+        docker container run --name midg --detach -it -e DISPLAY=:10 --privileged=true --device /dev/snd -v /var/run/docker.sock:/var/run/docker.sock -v /dev/shm:/dev/shm -v /tmp/.X11-unix:/tmp/.X11-unix midnightgrey /usr/bin/xfce4-session
 fi
 
 if [ "$1" == "dockerx" ]; then
