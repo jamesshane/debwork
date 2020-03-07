@@ -31,7 +31,7 @@ if [ "$1" == "vmdev" ]; then
 fi
 
 if [ "$1" == "xapps" ]; then
-        sudo apt install tmux terminator chromium-browser lilyterm htop tigervnc-viewer stress cmatrix curl git -y
+        sudo apt install tmux terminator chromium-browser lilyterm htop tigervnc-viewer stress cmatrix curl vim git -y
 fi
 
 if [ "$1" == "i3" ]; then
