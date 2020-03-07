@@ -3,7 +3,7 @@
 #cc33ff - purple
 
 if [ "$1" == "" ]; then
-echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserverxfce vncserverdwm vncserverwmii gitprep min(dwm) ultratiny(i3) ultratinydwm(dwm) ultratinywmii(wmii) docker dockerwminstall dockerx"
+echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserverxfce vncserverdwm vncserverwmii gitprep min(dwm) ultratiny(i3) ultratinydwm(dwm) ultratinywmii(wmii) docker dockerwminstall midnightdockerinstall dockerx"
 fi
 
 if [ "$1" == "update" ]; then
@@ -195,6 +195,14 @@ if [ "$1" == "dockerwminstall" ]; then
         docker build -t csicar/dockerwm .
         Xephyr :10 -ac -br -screen 1024x768 -resizeable -reset -terminate &
         docker container run --name mate --detach -it -e DISPLAY=:10 --device /dev/snd -v /dev/shm:/dev/shm -v /tmp/.X11-unix:/tmp/.X11-unix csicar/dockerwm /usr/bin/mate-session
+fi
+
+if [ "$1" == "midnightdockerinstall" ]; then
+        git clone https://github.com/jamesshane/midnightdocker.git
+        cd midnightdocker
+        docker build -t midnightgrey .
+        Xephyr :10 -ac -br -screen 1024x768 -resizeable -reset -terminate &
+        docker container run --name midg --detach -it -e DISPLAY=:10 --device /dev/snd -v /dev/shm:/dev/shm -v /tmp/.X11-unix:/tmp/.X11-unix midnightgrey /usr/bin/xfce4-session
 fi
 
 if [ "$1" == "dockerx" ]; then
