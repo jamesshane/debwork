@@ -206,7 +206,7 @@ if [ "$1" == "midnightdockerinstall" ]; then
 fi
 
 if [ "$1" == "dockerx" ]; then
-        Xephyr :1 -ac -br -screen 1024x768 -resizeable -reset -terminate &
+        Xephyr :10 -ac -br -screen 1024x768 -resizeable -reset -terminate &
 fi
 
 if [ "$1" == "powerline" ]; then
