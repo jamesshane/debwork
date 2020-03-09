@@ -11,6 +11,11 @@ if [ "$1" == "update" ]; then
 	sudo apt upgrade -y
 fi
 
+if [ "$1" == "updatethis" ]; then
+	sudo cp ~/mydev/debwork/midnight.sh /usr/local/bin/
+	#sudo apt upgrade -y
+fi
+
 if [ "$1" == "X" ]; then
         sudo apt install xubuntu-desktop -y
 fi
@@ -197,12 +202,20 @@ if [ "$1" == "dockerwminstall" ]; then
         docker container run --name mate --detach -it -e DISPLAY=:10 --device /dev/snd -v /dev/shm:/dev/shm -v /tmp/.X11-unix:/tmp/.X11-unix csicar/dockerwm /usr/bin/mate-session
 fi
 
-if [ "$1" == "midnightdockerinstall" ]; then
+if [ "$1" == "midnightdockerinstall_old" ]; then
         git clone https://github.com/jamesshane/dockermidnight.git
         cd dockermidnight
         docker build -t midnightgrey .
         Xephyr :10 -ac -br -screen 1024x768 -resizeable -reset -terminate &
         docker container run --name midg --detach -it -e DISPLAY=:10 --privileged=true --device /dev/snd -v /var/run/docker.sock:/var/run/docker.sock -v /dev/shm:/dev/shm -v /tmp/.X11-unix:/tmp/.X11-unix midnightgrey /usr/bin/xfce4-session
+fi
+
+if [ "$1" == "midnightdockerinstall" ]; then
+        #git clone https://github.com/jamesshane/dockermidnight.git
+        #cd dockermidnight
+        #docker build -t midnightgrey .
+        Xephyr :10 -ac -br -screen 1024x768 -resizeable -reset -terminate &
+        docker container run --name midg --detach -it -e DISPLAY=:10 --privileged=true --device /dev/snd -v /var/run/docker.sock:/var/run/docker.sock -v /dev/shm:/dev/shm -v /tmp/.X11-unix:/tmp/.X11-unix jamesshane/midnightgrey /usr/bin/xfce4-session
 fi
 
 if [ "$1" == "dockerx" ]; then
