@@ -3,7 +3,7 @@
 #cc33ff - purple
 
 if [ "$1" == "" ]; then
-echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserverxfce vncserverdwm vncserverwmii gitprep min(dwm) ultratiny(i3) ultratinydwm(dwm) ultratinywmii(wmii) docker dockerwminstall midnightdockerinstall dockerx"
+echo "full fullmin fulldev dev update X i3 lightdm vmdev snap omz omb neofetch xapps lamp mydevnode mydevmongo mydevyarn vncserverxfce vncserverdwm vncserverwmii gitprep min(dwm) ultratiny(i3) ultratinydwm(dwm) ultratinywmii(wmii) docker dockerwminstall midnightdockerinstall dockerx"
 fi
 
 if [ "$1" == "update" ]; then
@@ -12,7 +12,7 @@ if [ "$1" == "update" ]; then
 fi
 
 if [ "$1" == "updatethis" ]; then
-	sudo cp ~/mydev/debwork/midnight.sh /usr/local/bin/
+	sudo cp $0 /usr/local/bin/
 	#sudo apt upgrade -y
 fi
 
@@ -66,6 +66,13 @@ if [ "$1" == "omz" ]; then
         sudo apt install zsh wget -y
         sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
         sed -i 's/robbyrussell/junkfood/g' ~/.zshrc
+fi
+
+if [ "$1" == "omb" ]; then
+        sudo apt install git -y
+        sudo apt install wget -y
+        sh -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
+        #sed -i 's/robbyrussell/junkfood/g' ~/.zshrc
 fi
 
 if [ "$1" == "fixclock" ]; then
