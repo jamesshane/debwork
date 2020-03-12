@@ -359,3 +359,9 @@ if [ "$1" == "desktop" ]; then
         #./$0 lamp
 fi
 
+if [ "$1" == "midnghtbaseinstall" ]; then
+        ./$0 update
+        ./$0 vmdev
+        ./$0 docker
+fi
+
