@@ -73,7 +73,7 @@ if [ "$1" == "omb" ]; then
         sudo apt install wget -y
         sh -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
         sed -i 's/font/zork/g' ~/.bashrc
-        echo -e "\nxhost +si:localuser:jamesshane\n" ~/.bashrc
+        echo -e "\nxhost +si:localuser:jamesshane\n" >> ~/.bashrc
 fi
 
 if [ "$1" == "fixclock" ]; then
