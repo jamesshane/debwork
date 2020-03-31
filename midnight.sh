@@ -72,7 +72,8 @@ if [ "$1" == "omb" ]; then
         sudo apt install git -y
         sudo apt install wget -y
         sh -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
-        #sed -i 's/robbyrussell/junkfood/g' ~/.zshrc
+        sed -i 's/font/zork/g' ~/.bashrc
+        echo -e "\nxhost +si:localuser:jamesshane\n" ~/.bashrc
 fi
 
 if [ "$1" == "fixclock" ]; then
@@ -93,6 +94,13 @@ if [ "$1" == "snap" ]; then
         sudo snap install simplenote
         sudo snap install cordless
         sudo snap install google-cloud-sdk --classic
+fi
+
+if [ "$1" == "snapfast" ]; then
+	sudo snap install discord
+        sudo snap install code --classic
+        sudo snap install docker
+        sudo snap install docker-compose
 fi
 
 if [ "$1" == "lamp" ]; then
