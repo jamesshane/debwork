@@ -101,6 +101,7 @@ if [ "$1" == "snapfast" ]; then
         sudo snap install code --classic
         sudo snap install docker
         sudo snap install docker-compose
+        sudo snap install lxd
 fi
 
 if [ "$1" == "lamp" ]; then
