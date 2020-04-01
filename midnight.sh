@@ -132,7 +132,8 @@ if [ "$1" == "snapfast" ]; then
         sudo addgroup groupname
         sudo usermod -aG docker $USER
         sudo snap start docker
-        sudo chmod 666 /var/run/docker.sock
+        #sudo chmod 666 /var/run/docker.sock
+        sudo chown root:docker /var/run/docker.sock
 fi
 
 if [ "$1" == "snapfastnoX" ]; then
@@ -143,7 +144,8 @@ if [ "$1" == "snapfastnoX" ]; then
         sudo addgroup groupname
         sudo usermod -aG docker $USER
         sudo snap start docker
-        sudo chmod 666 /var/run/docker.sock
+        #sudo chmod 666 /var/run/docker.sock
+        sudo chown root:docker /var/run/docker.sock
 fi
 
 if [ "$1" == "lamp" ]; then
