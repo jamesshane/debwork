@@ -20,6 +20,10 @@ if [ "$1" == "X" ]; then
         sudo apt install xubuntu-desktop -y
 fi
 
+if [ "$1" == "Xmate" ]; then
+        sudo apt install ubuntu-mate-desktop -y
+fi
+
 if [ "$1" == "gitprep" ]; then
         git config --global user.name "James Shane"
         git config --global user.email "jamesshane@gmail.com"
@@ -102,7 +106,6 @@ if [ "$1" == "vim" ]; then
         git clone https://github.com/tpope/vim-fugitive
 fi
 
-
 if [ "$1" == "neofetch" ]; then
 	sudo add-apt-repository ppa:dawidd0811/neofetch-daily -y
         sudo apt update
@@ -124,6 +127,14 @@ if [ "$1" == "snapfast" ]; then
         sudo snap install docker
         sudo snap install docker-compose
         sudo snap install lxd
+        sudo usermod -aG docker $USER
+fi
+
+if [ "$1" == "snapfastnoX" ]; then
+	sudo snap install cordless
+        sudo snap install docker
+        sudo snap install lxd
+        sudo usermod -aG docker $USER
 fi
 
 if [ "$1" == "lamp" ]; then
@@ -180,6 +191,20 @@ if [ "$1" == "vncserverxfce" ]; then
         rm ~/.vnc/xstartup
         #echo -e "#"'!'"/bin/bash\n\nwmii &" > ~/.vnc/xstartup
         echo -e "#"'!'"/bin/bash\nxrdb $HOME/.Xresources\nstartxfce4 &" > ~/.vnc/xstartup
+        chmod +x ~/.vnc/xstartup
+        #sudo snap install simplenote && wmii
+        #sed -i 's/4/1/' .wmii/wmiirc_local
+        vncserver
+fi
+
+if [ "$1" == "vncservermate" ]; then
+        sudo apt install tigervnc-standalone-server tigervnc-common tigervnc-xorg-extension -y
+        echo -e "\nPassword for vncserver:\n";
+        vncserver 
+        vncserver -kill :1
+        rm ~/.vnc/xstartup
+        #echo -e "#"'!'"/bin/bash\n\nwmii &" > ~/.vnc/xstartup
+        echo -e "#"'!'"/bin/bash\nxrdb $HOME/.Xresources\nmate-session &" > ~/.vnc/xstartup
         chmod +x ~/.vnc/xstartup
         #sudo snap install simplenote && wmii
         #sed -i 's/4/1/' .wmii/wmiirc_local
