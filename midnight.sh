@@ -114,6 +114,7 @@ if [ "$1" == "neofetch" ]; then
 fi
 
 if [ "$1" == "snap" ]; then
+        sudo snap refresh
 	sudo snap install discord
         sudo snap install code --classic
         sudo snap install simplenote
@@ -122,6 +123,7 @@ if [ "$1" == "snap" ]; then
 fi
 
 if [ "$1" == "snapfast" ]; then
+        sudo snap refresh
 	sudo snap install discord
         sudo snap install code --classic
         sudo snap install docker
@@ -129,15 +131,18 @@ if [ "$1" == "snapfast" ]; then
         sudo snap install lxd
         sudo addgroup groupname
         sudo usermod -aG docker $USER
+        sudo snap start docker
         sudo chmod 666 /var/run/docker.sock
 fi
 
 if [ "$1" == "snapfastnoX" ]; then
+        sudo snap refresh
 	sudo snap install cordless
         sudo snap install docker
         sudo snap install lxd
         sudo addgroup groupname
         sudo usermod -aG docker $USER
+        sudo snap start docker
         sudo chmod 666 /var/run/docker.sock
 fi
 
