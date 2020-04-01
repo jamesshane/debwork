@@ -129,7 +129,7 @@ if [ "$1" == "snapfast" ]; then
         sudo snap install docker
         sudo snap install docker-compose
         sudo snap install lxd
-        sudo addgroup groupname
+        sudo addgroup docker
         sudo usermod -aG docker $USER
         sudo snap start docker
         #sudo chmod 666 /var/run/docker.sock
@@ -141,7 +141,7 @@ if [ "$1" == "snapfastnoX" ]; then
 	sudo snap install cordless
         sudo snap install docker
         sudo snap install lxd
-        sudo addgroup groupname
+        sudo addgroup docker
         sudo usermod -aG docker $USER
         sudo snap start docker
         #sudo chmod 666 /var/run/docker.sock
